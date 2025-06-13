@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nazlı’ya Özel</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe6f0, #ffe0ff);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #99004d;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #e60073;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.3em;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+
+    .heart {
+      font-size: 2em;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes pulse {
+      from {transform: scale(1);}
+      to {transform: scale(1.2);}
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Nazlı’ya Özel Bir Sürpriz 💖</h1>
+  <p>Her satırda, her harfte, her nefeste sadece sen varsın...  
+     Tanıştığımız günden beri kalbimde bir şey eksik değil. Çünkü seninle tamamlandım.</p>
+
+  <div class="heart">❤️</div>
+
+  <p>Bu sayfa belki basit görünüyor... Ama içinde taşıdığı duygular kocaman:  
+  Seni her geçen gün daha çok seviyorum, Nazlı.</p>
+
+  <footer>Hazırlayan: Eren</footer>
+</body>
+<button id="musicBtn" class="music-button" onclick="playMusic()">💖 Müziği Başlat 💖</button>
+
+<audio id="nazliMusic" loop>
+  <source src="nazlima.mp3" type="audio/mpeg">
+  Tarayıcınız müziği desteklemiyor.
+</audio>
+
+<style>
+  .music-button {
+    font-size: 20px;
+    padding: 14px 28px;
+    background: #e60073;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+    transition: transform 0.2s;
+  }
+
+  .music-button:hover {
+    background: #cc0066;
+    transform: scale(1.05);
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<script>
+  function playMusic() {
+    const music = document.getElementById("nazliMusic");
+    const btn = document.getElementById("musicBtn");
+    music.play();
+    btn.textContent = "Nazlı için çalıyor 🎶";
+    btn.disabled = true;  // Buton tekrar basılmasın diye kapatıyoruz
+    btn.style.cursor = "default";
+  }
+</script>
+
+<div id="loveCounter" style="font-size: 24px; color: #e60073; margin: 30px 0; font-weight: bold;"></div>
+
+<script>
+  function calculateDays() {
+    const startDate = new Date('2025-06-08'); // Buraya tanışma tarihini yaz
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+
+  function updateCounter() {
+    const days = calculateDays();
+    const counter = document.getElementById('loveCounter');
+    counter.textContent = `Nazlı ile birlikte ${days} gündür aşk doluyuz 💖`;
+  }
+
+  updateCounter();
+  // Gün değişince otomatik güncellenir
+  setInterval(updateCounter, 1000 * 60 * 60); 
+</script>
